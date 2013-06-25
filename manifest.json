@@ -9,9 +9,5 @@
   "permissions":[
     "https://feedbin.me/",
     "tabs"
-  ],
-  "page_action" : {
-    "default_icon" : "images/feedbin.png",
-    "default_popup" : "options.html"
-  }
+  ]
 }

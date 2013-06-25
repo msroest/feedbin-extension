@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+
+  "name": "Feedbin.me AutoRefresh",
+  "description": "This Extension will auto refresh Feedbin.me on a configurable interval",
+  "version": "1.0",
+  "background": { "scripts": ["background.js"] },
+  "options_page":"options.html",
+  "permissions":[
+    "https://feedbin.me/",
+    "tabs"
+  ],
+  "page_action" : {
+    "default_icon" : "images/feedbin.png",
+    "default_popup" : "options.html"
+  }
+}

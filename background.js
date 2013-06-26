@@ -7,13 +7,21 @@ function registerReload(tabId,changeInfo,tab) {
 			refresh = 300;
 		refresh = refresh*1000;
 		if(!timeout)
-			timeout = setTimeout(function() {doReload(tabId);},refresh)
+			timeout = setTimeout(function() {doReload(tabId,refresh);},refresh)
 	}
 
 }
-function doReload(tabId) {
-	chrome.tabs.reload(tabId);
-	timeout="";
+function doReload(tabId,refresh) {
+	
+	chrome.tabs.get(tabId,function(tab) {
+		if(tab.active) {
+			timeout = setTimeout(function() {doReload(tabId,refresh);},refresh);
+		}
+		else {
+			timeout="";
+			chrome.tabs.reload(tabId);	
+		}
+	});
 	return;
 }
 

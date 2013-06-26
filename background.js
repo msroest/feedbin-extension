@@ -1,3 +1,4 @@
+var timeout;
 function registerReload(tabId,changeInfo,tab) {
 
 	if(tab.url == "https://feedbin.me/" || tab.url == "https://feedbin.me") {
@@ -5,13 +6,14 @@ function registerReload(tabId,changeInfo,tab) {
 		if(!refresh)
 			refresh = 300;
 		refresh = refresh*1000;
-		
-		setTimeout(function() {doReload(tabId);},refresh)
+		if(!timeout)
+			timeout = setTimeout(function() {doReload(tabId);},refresh)
 	}
 
 }
 function doReload(tabId) {
 	chrome.tabs.reload(tabId);
+	timeout="";
 	return;
 }
 
